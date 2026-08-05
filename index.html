@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!-- 04 AUGUST – GLOBAL ATTRIBUTE: lang identifies the document language. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Newbridge Campus Connect educational website prototype.">
+  <title>Newbridge Campus Connect | Home</title>
+  <!-- The shared external stylesheet keeps the four website pages visually consistent. -->
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- This notice makes it clear that the project is not the official NGI website. -->
+  <p class="prototype-note">Educational prototype created for the VPPHX HTML class — not the official NGI website.</p>
+
+  <!-- 04 AUGUST – DIV: A div groups the website heading and navigation as one block. -->
+  <div class="site-top">
+    <div class="page-width top-row">
+      <!-- 04 AUGUST – class is reusable; title supplies supplementary information. -->
+      <a class="brand" href="index.html" title="Return to the home page">
+        <!-- 04 AUGUST – SPAN: spans group small pieces of content within a line. -->
+        <span class="brand-mark">N</span>
+        <!-- translate="no" is a global attribute that protects the brand name. -->
+        <span translate="no">
+          <span class="brand-name">Newbridge Campus Connect</span>
+          <span class="brand-subtitle">Find your path. Build your future.</span>
+        </span>
+      </a>
+
+      <!-- An unordered list organises the navigation links. -->
+      <ul class="site-links">
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="programmes.html">Programmes</a></li>
+        <li><a href="student-life.html">Student Life</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- The hero combines a background image, headings, text formatting and hyperlinks. -->
+  <div class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">Your student journey starts here</p>
+      <h1>A clearer way to explore life at Newbridge</h1>
+      <p class="hero-text">
+        Discover programmes, compare study options and connect with campus life through one
+        <strong>simple</strong> and <em>student-friendly</em> space.
+      </p>
+      <div class="hero-actions">
+        <a class="button-link" href="programmes.html">Explore programmes</a>
+        <a class="button-link secondary" href="contact.html">Make an enquiry</a>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    04 AUGUST – EVENT AND GLOBAL ATTRIBUTES:
+    onclick triggers behaviour; hidden keeps the extra paragraph out of view
+    until the toggleAnnouncement() function changes its hidden value.
+  -->
+  <div class="announcement">
+    <strong>Applications and registrations:</strong> Use this prototype to plan your next step.
+    <button type="button" onclick="toggleAnnouncement()">More information</button>
+    <p id="extra-announcement" hidden>
+      This classroom project does not submit a real application. Visit the official NGI website for current admissions information.
+    </p>
+  </div>
+
+  <div class="content-block white">
+    <div class="page-width">
+      <div class="section-heading">
+        <p class="eyebrow">Start with what you need</p>
+        <h2>Three quick routes into campus life</h2>
+        <p>The homepage avoids overwhelming visitors by grouping common tasks into clear choices.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="info-card">
+          <img class="card-image" src="images/programmes-lab.png" alt="Students collaborating in a computer laboratory">
+          <div class="card-body">
+            <h3>Choose a programme</h3>
+            <p>Browse practical study options and compare key details in one place.</p>
+            <a class="text-link" href="programmes.html">View study options</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <img class="card-image" src="images/student-life.png" alt="Students studying and socialising outdoors">
+          <div class="card-body">
+            <h3>Experience student life</h3>
+            <p>See how learning, community and personal development come together.</p>
+            <a class="text-link" href="student-life.html">Visit student life</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <img class="card-image" src="images/contact-advisors.png" alt="Student advisors having a friendly conversation">
+          <div class="card-body">
+            <h3>Speak to an advisor</h3>
+            <p>Complete a simple enquiry form and tell us what you would like to study.</p>
+            <a class="text-link" href="contact.html">Contact the team</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <div class="page-width feature-layout">
+      <div>
+        <p class="eyebrow">Why Campus Connect?</p>
+        <h2>Useful information without the clutter</h2>
+        <p>
+          This redesign concept keeps important information visible and gives each page one clear purpose.
+          Visitors can move between pages using ordinary HTML hyperlinks.
+        </p>
+        <ol class="check-list">
+          <li>Find the correct school and programme.</li>
+          <li>Compare information in a structured table.</li>
+          <li>See and hear a glimpse of student life.</li>
+          <li>Send an enquiry through a complete HTML form.</li>
+        </ol>
+        <a class="button-link" href="student-life.html">See the campus experience</a>
+      </div>
+      <a href="student-life.html" title="Open the Student Life page">
+        <img class="feature-image" src="images/student-life.png" alt="A diverse student community on campus">
+      </a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="page-width">
+      <div class="footer-grid">
+        <div>
+          <h3 translate="no">Newbridge Campus Connect</h3>
+          <p>A student-built redesign concept that will grow as the VPPHX class learns new HTML concepts.</p>
+        </div>
+        <div>
+          <h3>Quick links</h3>
+          <ul>
+            <li><a href="programmes.html">Programmes</a></li>
+            <li><a href="student-life.html">Student Life</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Official website</h3>
+          <p><a href="https://www.ngi.ac.za/" target="_blank" rel="noopener">Visit ngi.ac.za</a></p>
+        </div>
+      </div>
+      <p class="copyright">Copyright 2026. Classroom prototype for educational demonstration.</p>
+    </div>
+  </div>
+
+  
+</body>
+</html>

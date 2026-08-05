@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<!-- 04 AUGUST – GLOBAL ATTRIBUTE: lang identifies the page language as English. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore programmes in the Newbridge Campus Connect educational prototype.">
+  <title>Newbridge Campus Connect | Programmes</title>
+
+  <!--
+    04 AUGUST – EXTERNAL CSS:
+    The main website styles are stored in a separate file so that all four pages
+    can share the same design. The 04 August slides mention this as the usual
+    approach for a larger website.
+  -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- ================================================================
+       04 AUGUST – INTERNAL CSS
+       Internal CSS is written inside a <style> element in the <head>.
+       These rules belong only to the lesson demonstration on this page.
+       ================================================================ -->
+  <style>
+    /*
+      ID SELECTOR: #august-lesson-title targets the one element whose
+      id="august-lesson-title". The # symbol identifies an ID selector.
+    */
+    #august-lesson-title {
+      color: #003366; /* property: color | value: #003366 (hexadecimal) */
+      font-size: 2.25rem;
+    }
+
+    /*
+      CLASS SELECTOR: .august-lesson-panel can be reused.
+      This rule also demonstrates a hexadecimal background colour.
+    */
+    .august-lesson-panel {
+      margin-top: 28px;
+      padding: 25px;
+      border: 2px solid #78be20;
+      border-radius: 14px;
+      background-color: #ffffff;
+    }
+
+    /*
+      This reusable class demonstrates font-family, font-size,
+      font-weight and font-style from the 04 August lesson.
+    */
+    .august-lesson-notice {
+      padding: 14px;
+      color: darkslategray; /* named colour */
+      background-color: rgb(228, 243, 211); /* RGB colour */
+      font-family: Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .august-preview-input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #aebbb6;
+      border-radius: 7px;
+      font: inherit;
+    }
+
+    .august-preview-output {
+      min-height: 52px;
+      padding: 12px;
+      border-left: 5px solid #003366;
+      background-color: #f3f7f5;
+    }
+
+    .august-alert-button {
+      padding: 10px 16px;
+      border: 2px solid #003366;
+      border-radius: 8px;
+      color: white;
+      background-color: #003366;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <p class="prototype-note">Educational prototype created for the VPPHX HTML class — not the official NGI website.</p>
+
+  <div class="site-top">
+    <div class="page-width top-row">
+      <!--
+        04 AUGUST – GLOBAL ATTRIBUTES:
+        class groups elements for styling; title supplies extra information;
+        accesskey suggests a keyboard shortcut (the exact key combination varies).
+      -->
+      <a class="brand" href="index.html" title="Return to the home page" accesskey="h">
+        <span class="brand-mark">N</span>
+        <!-- translate="no" asks translation tools to keep the brand name unchanged. -->
+        <span translate="no">
+          <span class="brand-name">Newbridge Campus Connect</span>
+          <span class="brand-subtitle">Find your path. Build your future.</span>
+        </span>
+      </a>
+      <ul class="site-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active" href="programmes.html">Programmes</a></li>
+        <li><a href="student-life.html">Student Life</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-banner">
+    <div class="page-width">
+      <p class="eyebrow">Explore your options</p>
+      <h1>Find a programme that fits your ambition</h1>
+      <p>Use the buttons to filter the programme cards, then compare the schools in the table below.</p>
+    </div>
+  </div>
+
+  <!-- ==================================================================
+       04 AUGUST CLASSROOM ADDITION
+       This block brings the day's styling, global-attribute, event-attribute
+       and data-attribute concepts together inside the existing website.
+       ================================================================== -->
+  <div class="content-block">
+    <div class="page-width">
+      <p class="eyebrow">04 August classroom build</p>
+
+      <!-- id identifies this one unique heading; internal CSS targets it with #. -->
+      <h2 id="august-lesson-title">Styling, attributes and simple interaction</h2>
+
+      <p>
+        This teaching panel demonstrates the new concepts without changing the
+        purpose or design of the Campus Connect website.
+      </p>
+
+      <!--
+        DIV CONTAINER: This div groups a heading, paragraphs, an input and a button.
+        It behaves as a block and normally begins on a new line.
+
+        GLOBAL ATTRIBUTES:
+        - class connects the div to a reusable CSS rule.
+        - title provides supplementary information.
+
+        DATA ATTRIBUTE:
+        - data-lesson-code stores custom information that is not displayed automatically.
+      -->
+      <div
+        class="august-lesson-panel"
+        title="This panel demonstrates the concepts introduced on 04 August"
+        data-lesson-code="VPPHX-04AUG">
+
+        <h3>Campus open-day reminder</h3>
+
+        <!-- The same class could be reused on other notices. -->
+        <p class="august-lesson-notice">
+          Programme advisors will be available to answer student questions.
+        </p>
+
+        <!--
+          SPAN CONTAINER: span groups only the date inside this line.
+          INLINE CSS: the style attribute applies CSS directly to this one span.
+        -->
+        <p>
+          The next information session takes place on
+          <span style="color: darkred; font-weight: bold;">7 August at 10:00</span>.
+        </p>
+
+        <!-- hidden is a global attribute; this draft is not displayed in the browser. -->
+        <p hidden>This draft reminder is not yet relevant to visitors.</p>
+
+        <h3>Try a keyboard event</h3>
+        <label for="august-preview-input">Type a short programme question:</label>
+
+        <!--
+          EVENT ATTRIBUTE: onkeyup runs when a pressed key is released.
+          The JavaScript copies this input's value into the paragraph whose
+          unique ID is august-preview-output.
+        -->
+        <input
+          class="august-preview-input"
+          id="august-preview-input"
+          type="text"
+          title="Type here to update the preview below"
+          placeholder="Example: When do applications close?"
+          onkeyup="document.getElementById('august-preview-output').textContent = this.value">
+
+        <p class="august-preview-output" id="august-preview-output">
+          Your question will appear here.
+        </p>
+
+        <!-- EVENT ATTRIBUTE: onclick runs the JavaScript alert when activated. -->
+        <button
+          class="august-alert-button"
+          type="button"
+          title="Display a simple JavaScript alert"
+          onclick="alert('Thank you for exploring the Newbridge programmes!')">
+          Test the onclick event
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-block white">
+    <div class="page-width">
+      <div class="section-heading">
+        <p class="eyebrow">Programme finder</p>
+        <h2>Popular study areas</h2>
+        <p>Each card stores extra information in custom <code>data-*</code> attributes.</p>
+      </div>
+
+      <!--
+        04 AUGUST – EVENT ATTRIBUTE:
+        onclick runs a JavaScript function when a filter button is activated.
+      -->
+      <div class="filter-row">
+        <button class="selected" type="button" onclick="filterProgrammes('all', this)">All</button>
+        <button type="button" onclick="filterProgrammes('career', this)">Career programmes</button>
+        <button type="button" onclick="filterProgrammes('qualification', this)">Qualifications</button>
+      </div>
+
+      <div class="programme-grid">
+        <!--
+          04 AUGUST – CUSTOM DATA ATTRIBUTES:
+          data-programme-id, data-school and data-level store extra information.
+          Their values do not appear on the page automatically.
+
+          04 AUGUST – POINTER EVENT ATTRIBUTES:
+          onmouseover adds the hovered class when the pointer enters the card.
+          onmouseout removes the class when the pointer leaves the card.
+        -->
+        <div class="workshop-card"
+             data-programme-id="CPWD101"
+             data-school="engineering-it-design"
+             data-level="career"
+             onmouseover="this.classList.add('hovered')"
+             onmouseout="this.classList.remove('hovered')">
+          <span class="programme-code">CPWD101 · CAREER PROGRAMME</span>
+          <h3>Computer Programming and Web Development</h3>
+          <p>Build practical foundations in programming, websites and digital problem-solving.</p>
+        </div>
+
+        <div class="workshop-card"
+             data-programme-id="GWD102"
+             data-school="engineering-it-design"
+             data-level="career"
+             onmouseover="this.classList.add('hovered')"
+             onmouseout="this.classList.remove('hovered')">
+          <span class="programme-code">GWD102 · CAREER PROGRAMME</span>
+          <h3>Graphic and Web Design</h3>
+          <p>Combine visual communication, design thinking and website creation.</p>
+        </div>
+
+        <div class="workshop-card"
+             data-programme-id="CBA201"
+             data-school="commerce"
+             data-level="qualification"
+             onmouseover="this.classList.add('hovered')"
+             onmouseout="this.classList.remove('hovered')">
+          <span class="programme-code">CBA201 · QUALIFICATION</span>
+          <h3>Bachelor of Commerce</h3>
+          <p>Develop broad business knowledge for a changing professional environment.</p>
+        </div>
+
+        <div class="workshop-card"
+             data-programme-id="HTM202"
+             data-school="environment-leisure"
+             data-level="qualification"
+             onmouseover="this.classList.add('hovered')"
+             onmouseout="this.classList.remove('hovered')">
+          <span class="programme-code">HTM202 · QUALIFICATION</span>
+          <h3>Hospitality and Tourism</h3>
+          <p>Explore guest experiences, tourism operations and service leadership.</p>
+        </div>
+
+        <div class="workshop-card"
+             data-programme-id="ECD203"
+             data-school="humanities-education"
+             data-level="qualification"
+             onmouseover="this.classList.add('hovered')"
+             onmouseout="this.classList.remove('hovered')">
+          <span class="programme-code">ECD203 · QUALIFICATION</span>
+          <h3>Early Childhood Development</h3>
+          <p>Prepare to support young learners during an important stage of development.</p>
+        </div>
+
+        <div class="workshop-card"
+             data-programme-id="SPM204"
+             data-school="sport-fitness"
+             data-level="qualification"
+             onmouseover="this.classList.add('hovered')"
+             onmouseout="this.classList.remove('hovered')">
+          <span class="programme-code">SPM204 · QUALIFICATION</span>
+          <h3>Sport Management</h3>
+          <p>Connect business principles with the energetic world of sport and fitness.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <div class="page-width">
+      <div class="section-heading">
+        <p class="eyebrow">Compare study areas</p>
+        <h2>Schools at a glance</h2>
+        <p>The table uses headings, rows, columns, a caption and scope attributes.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Example programme routes by school</caption>
+          <thead>
+            <tr>
+              <th scope="col">School</th>
+              <th scope="col">Example study area</th>
+              <th scope="col">What it develops</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Commerce</th>
+              <td>Business and marketing</td>
+              <td>Commercial thinking and management</td>
+            </tr>
+            <tr>
+              <th scope="row">Engineering, IT and Design</th>
+              <td>Programming and web development</td>
+              <td>Technical and creative problem-solving</td>
+            </tr>
+            <tr>
+              <th scope="row">Humanities and Education</th>
+              <td>Education and human development</td>
+              <td>Communication and community impact</td>
+            </tr>
+            <tr>
+              <th scope="row">Environment and Leisure</th>
+              <td>Tourism, hospitality and nature</td>
+              <td>Service, operations and sustainability</td>
+            </tr>
+            <tr>
+              <th scope="row">Sport and Fitness</th>
+              <td>Sport management and personal training</td>
+              <td>Performance, coaching and business</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p><small>Programme names and availability should be confirmed on the official NGI website.</small></p>
+    </div>
+  </div>
+
+  <div class="content-block white">
+    <div class="page-width feature-layout">
+      <img class="feature-image" src="images/programmes-lab.png" alt="Students collaborating with laptops in a computer lab">
+      <div>
+        <p class="eyebrow">Need help deciding?</p>
+        <h2>Start a conversation with a student advisor</h2>
+        <p>Tell us which school interests you and the enquiry form will collect the information needed for a follow-up.</p>
+        <a class="button-link" href="contact.html">Open the enquiry form</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="page-width">
+      <div class="footer-grid">
+        <div><h3 translate="no">Newbridge Campus Connect</h3><p>A student-built website redesign concept.</p></div>
+        <div><h3>Quick links</h3><ul><li><a href="index.html">Home</a></li><li><a href="student-life.html">Student Life</a></li></ul></div>
+        <div><h3>Next step</h3><p><a href="contact.html">Make an enquiry</a></p></div>
+      </div>
+      <p class="copyright">Copyright 2026. Classroom prototype for educational demonstration.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
