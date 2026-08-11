@@ -7,39 +7,52 @@
   <meta name="description" content="Explore student life and HTML media in the Campus Connect prototype.">
   <title>Newbridge Campus Connect | Student Life</title>
   <link rel="stylesheet" href="styles.css">
+
+  <link rel="icon" type="image/png" href="images/Newbridge-logo.png">
+
 </head>
 <body>
+  <!-- 05 AUGUST – ACCESSIBILITY: this link skips the repeated site navigation. -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <p class="prototype-note">Educational prototype created for the VPPHX HTML class — not the official NGI website.</p>
 
-  <div class="site-top">
+  <!-- 05 AUGUST – SEMANTIC MARKUP: header contains introductory site content. -->
+  <header class="site-top">
     <div class="page-width top-row">
       <a class="brand" href="index.html" title="Return to the home page">
         <span class="brand-mark">N</span>
         <!-- translate="no" asks translation tools not to translate the brand name. -->
         <span translate="no"><span class="brand-name">Newbridge Campus Connect</span><span class="brand-subtitle">Find your path. Build your future.</span></span>
       </a>
-      <ul class="site-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="programmes.html">Programmes</a></li>
-        <li><a class="active" href="student-life.html">Student Life</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      <!-- 05 AUGUST – SEMANTIC MARKUP: nav identifies the primary navigation. -->
+      <nav aria-label="Primary navigation">
+        <ul class="site-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="programmes.html">Programmes</a></li>
+          <li><a class="active" href="student-life.html" aria-current="page">Student Life</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <div class="page-banner">
+  <!-- 05 AUGUST – SEMANTIC MARKUP: main contains the page's unique content. -->
+  <main id="main-content" tabindex="-1">
+
+  <section class="page-banner" aria-labelledby="student-life-page-heading">
     <div class="page-width">
       <p class="eyebrow">More than lectures</p>
-      <h1>Learn, connect and grow on campus</h1>
+      <h1 id="student-life-page-heading">Learn, connect and grow on campus</h1>
       <p>This page demonstrates images, audio and video while introducing the community side of student life.</p>
     </div>
-  </div>
+  </section>
 
-  <div class="content-block white">
+  <section class="content-block white" aria-labelledby="campus-story-heading">
     <div class="page-width media-layout">
       <div>
         <p class="eyebrow">Campus story</p>
-        <h2>See a glimpse of the student experience</h2>
+        <h2 id="campus-story-heading">See a glimpse of the student experience</h2>
         <p>The video element displays moving media and gives the visitor playback controls.</p>
         <ul class="check-list">
           <li>Collaborative learning</li>
@@ -47,71 +60,88 @@
           <li>Career-focused projects</li>
         </ul>
       </div>
-      <div class="media-box">
-        <strong>Campus Connect introduction</strong>
+      <!-- 05 AUGUST – SEMANTIC MARKUP: figure groups media with its caption. -->
+      <figure class="media-box">
+        <figcaption><strong>Campus Connect introduction</strong></figcaption>
         <!-- controls gives the visitor buttons to play, pause and adjust the video. -->
-        <video controls poster="images/student-life.png">
+        <video controls poster="images/student-life.png" aria-label="Campus Connect introduction video">
           <source src="media/campus-connect.mp4" type="video/mp4">
           Your browser does not support the video element.
         </video>
-      </div>
+      </figure>
     </div>
-  </div>
+  </section>
 
-  <div class="content-block">
+  <section class="content-block" aria-labelledby="campus-audio-heading">
     <div class="page-width feature-layout">
       <img class="feature-image" src="images/student-life.png" alt="Friends studying and socialising on a leafy campus">
       <div>
         <p class="eyebrow">Listen</p>
-        <h2>A short Campus Connect sound ident</h2>
+        <h2 id="campus-audio-heading">A short Campus Connect sound ident</h2>
         <p>The audio element can place sound on a webpage without displaying video.</p>
-        <div class="media-box">
+        <figure class="media-box">
+          <figcaption><strong>Campus welcome audio</strong></figcaption>
           <!-- The source element tells the browser which audio file to play. -->
-          <audio controls>
+          <audio controls aria-label="Campus welcome audio">
             <source src="media/campus-welcome.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
           </audio>
-        </div>
+        </figure>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="content-block white">
+  <section class="content-block white" aria-labelledby="campus-guide-heading">
+    <div class="page-width">
+      <p class="eyebrow">Explore the campus</p>
+      <h2 id="campus-guide-heading">Campus Quick Guide</h2>
+      <iframe class="campus-frame"
+              src="campus-guide.html"
+              title="Newbridge Campus Quick Guide"
+              loading="lazy">
+      </iframe>
+    </div>
+  </section>
+
+  <section class="content-block" aria-labelledby="language-heading">
     <div class="page-width">
       <div class="section-heading">
         <p class="eyebrow">A global campus</p>
-        <h2>Welcome in more than one language</h2>
+        <h2 id="language-heading">Welcome in more than one language</h2>
         <p>The global <code>lang</code>, <code>dir</code> and <code>translate</code> attributes explain how text should be handled.</p>
       </div>
       <div class="language-box">
         <!-- 04 AUGUST – lang="zu" identifies this specific block as isiZulu. -->
-        <div lang="zu">
+        <!-- 05 AUGUST – ARTICLE: each language welcome is a complete item. -->
+        <article lang="zu">
           <strong>IsiZulu</strong>
           <p>Siyakwamukela emphakathini wethu wabafundi.</p>
-        </div>
+        </article>
         <!-- 04 AUGUST – dir="rtl" displays this Arabic content from right to left. -->
-        <div lang="ar" dir="rtl">
+        <article lang="ar" dir="rtl">
           <strong>العربية</strong>
           <p>مرحبا بكم في مجتمع الطلاب</p>
-        </div>
+        </article>
       </div>
       <!-- 04 AUGUST – title provides supplementary information, often as a tooltip. -->
-      <div class="quote-box" title="Student voice example">
+      <!-- 05 AUGUST – BLOCKQUOTE identifies a quotation from another source. -->
+      <blockquote class="quote-box" title="Student voice example">
         <p>“Campus feels smaller when information is easy to find and people are easy to reach.”</p>
-        <strong>— Student voice, prototype example</strong>
-      </div>
+        <cite>— Student voice, prototype example</cite>
+      </blockquote>
     </div>
-  </div>
+  </section>
+  </main>
 
-  <div class="footer">
+  <!-- 05 AUGUST – SEMANTIC MARKUP: footer contains closing site information. -->
+  <footer class="footer">
     <div class="page-width">
       <div class="footer-grid">
-        <div><h3 translate="no">Newbridge Campus Connect</h3><p>A student-built website redesign concept.</p></div>
-        <div><h3>Quick links</h3><ul><li><a href="index.html">Home</a></li><li><a href="programmes.html">Programmes</a></li></ul></div>
-        <div><h3>Join the journey</h3><p><a href="contact.html">Make an enquiry</a></p></div>
+        <div><h2 translate="no">Newbridge Campus Connect</h2><p>A student-built website redesign concept.</p></div>
+        <div><h2>Quick links</h2><ul><li><a href="index.html">Home</a></li><li><a href="programmes.html">Programmes</a></li></ul></div>
+        <div><h2>Join the journey</h2><p><a href="contact.html">Make an enquiry</a></p></div>
       </div>
-      <p class="copyright">Copyright 2026. Classroom prototype for educational demonstration.</p>
     </div>
-  </div>
+  </footer>
 </body>
 </html>
