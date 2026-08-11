@@ -7,37 +7,50 @@
   <meta name="description" content="Contact form demonstration for the Campus Connect educational prototype.">
   <title>Newbridge Campus Connect | Contact</title>
   <link rel="stylesheet" href="styles.css">
+
+  <link rel="icon" type="image/png" href="images/Newbridge-logo.png">
 </head>
 <body>
+  <!-- 05 AUGUST – ACCESSIBILITY: this link skips repeated navigation. -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <p class="prototype-note">Educational prototype created for the VPPHX HTML class — not the official NGI website.</p>
 
-  <div class="site-top">
+  <!-- 05 AUGUST – SEMANTIC MARKUP: header contains the site identity and navigation. -->
+  <header class="site-top">
     <div class="page-width top-row">
       <a class="brand" href="index.html" title="Return to the home page">
         <span class="brand-mark">N</span>
         <span translate="no"><span class="brand-name">Newbridge Campus Connect</span><span class="brand-subtitle">Find your path. Build your future.</span></span>
       </a>
-      <ul class="site-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="programmes.html">Programmes</a></li>
-        <li><a href="student-life.html">Student Life</a></li>
-        <li><a class="active" href="contact.html">Contact</a></li>
-      </ul>
+      <!-- 05 AUGUST – SEMANTIC MARKUP: nav identifies the primary navigation. -->
+      <nav aria-label="Primary navigation">
+        <ul class="site-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="programmes.html">Programmes</a></li>
+          <li><a href="student-life.html">Student Life</a></li>
+          <li><a class="active" href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <div class="page-banner">
+  <!-- 05 AUGUST – SEMANTIC MARKUP: main contains the page's unique content. -->
+  <main id="main-content" tabindex="-1">
+
+  <section class="page-banner" aria-labelledby="contact-page-heading">
     <div class="page-width">
       <p class="eyebrow">Let us help</p>
-      <h1>Connect with a student advisor</h1>
+      <h1 id="contact-page-heading">Connect with a student advisor</h1>
       <p>Complete the classroom enquiry form and tell us which study route interests you.</p>
     </div>
-  </div>
+  </section>
 
-  <div class="content-block">
+  <section class="content-block" aria-label="Programme enquiry information and form">
     <div class="page-width contact-layout">
-      <div class="contact-panel">
-        <h2>Before you begin</h2>
+      <!-- 05 AUGUST – ASIDE: this information supports the main enquiry form. -->
+      <aside class="contact-panel" aria-labelledby="before-you-begin-heading">
+        <h2 id="before-you-begin-heading">Before you begin</h2>
         <p>This is a demonstration form. It shows how different form controls collect different kinds of information.</p>
         <hr>
         <h3>What you can ask about</h3>
@@ -48,10 +61,10 @@
           <li>Fees and funding information</li>
         </ul>
         <p>For a real enquiry, visit <a href="https://www.ngi.ac.za/" target="_blank" rel="noopener">the official NGI website</a>.</p>
-      </div>
+      </aside>
 
-      <div class="form-card">
-        <h2>Programme enquiry</h2>
+      <section class="form-card" aria-labelledby="programme-enquiry-heading">
+        <h2 id="programme-enquiry-heading">Programme enquiry</h2>
         <!--
           04 AUGUST – EVENT ATTRIBUTE:
           onsubmit runs submitEnquiry() when the visitor submits the form.
@@ -98,8 +111,9 @@
               04 AUGUST – EVENT ATTRIBUTE:
               oninput runs every time the textarea value changes.
             -->
-            <textarea id="message" name="message" maxlength="250" placeholder="Tell us what you would like to know..." oninput="countCharacters(this)"></textarea>
-            <small id="character-count">0/250 characters</small>
+            <textarea id="message" name="message" maxlength="250" aria-describedby="character-count" placeholder="Tell us what you would like to know..." oninput="countCharacters(this)"></textarea>
+            <!-- aria-live allows the changing count to be announced without moving focus. -->
+            <small id="character-count" aria-live="polite">0/250 characters</small>
           </div>
 
           <div class="field">
@@ -110,22 +124,24 @@
           <button class="form-button" type="submit">Send demonstration enquiry</button>
           <button class="plain-button" type="reset">Clear form</button>
 
-          <p id="form-message" class="form-message" hidden></p>
+          <!-- role="status" announces the result of the demonstration submission. -->
+          <p id="form-message" class="form-message" role="status" hidden></p>
         </form>
-      </div>
+      </section>
     </div>
-  </div>
+  </section>
+  </main>
 
-  <div class="footer">
+  <!-- 05 AUGUST – SEMANTIC MARKUP: footer contains repeated closing content. -->
+  <footer class="footer">
     <div class="page-width">
       <div class="footer-grid">
-        <div><h3 translate="no">Newbridge Campus Connect</h3><p>A student-built website redesign concept.</p></div>
-        <div><h3>Quick links</h3><ul><li><a href="index.html">Home</a></li><li><a href="programmes.html">Programmes</a></li></ul></div>
-        <div><h3>Student life</h3><p><a href="student-life.html">Explore the experience</a></p></div>
+        <div><h2 translate="no">Newbridge Campus Connect</h2><p>A student-built website redesign concept.</p></div>
+        <div><h2>Quick links</h2><ul><li><a href="index.html">Home</a></li><li><a href="programmes.html">Programmes</a></li></ul></div>
+        <div><h2>Student life</h2><p><a href="student-life.html">Explore the experience</a></p></div>
       </div>
-      <p class="copyright">Copyright 2026. Classroom prototype for educational demonstration.</p>
     </div>
-  </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
