@@ -10,13 +10,24 @@
   <link rel="stylesheet" href="styles.css">
 
   <script src="script.js" defer></script>
+
+  <link rel="icon" type="image/png" href="images/Newbridge-logo.png">
+
 </head>
+
 <body>
+  <!--
+    05 AUGUST – ACCESSIBILITY:
+    This is the first keyboard-focusable link. It lets keyboard users bypass
+    the repeated website heading and navigation and move directly to <main>.
+  -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <!-- This notice makes it clear that the project is not the official NGI website. -->
   <p class="prototype-note">Educational prototype created for the VPPHX HTML class — not the official NGI website.</p>
 
-  <!-- 04 AUGUST – DIV: A div groups the website heading and navigation as one block. -->
-  <div class="site-top">
+  <!-- 05 AUGUST – SEMANTIC MARKUP: header identifies the website header. -->
+  <header class="site-top">
     <div class="page-width top-row">
       <!-- 04 AUGUST – class is reusable; title supplies supplementary information. -->
       <a class="brand" href="index.html" title="Return to the home page">
@@ -29,21 +40,31 @@
         </span>
       </a>
 
-      <!-- An unordered list organises the navigation links. -->
-      <ul class="site-links">
-        <li><a class="active" href="index.html">Home</a></li>
-        <li><a href="programmes.html">Programmes</a></li>
-        <li><a href="student-life.html">Student Life</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      <!-- 05 AUGUST – SEMANTIC MARKUP: nav identifies the primary navigation. -->
+      <nav aria-label="Primary navigation">
+        <!-- An unordered list organises the navigation links. -->
+        <ul class="site-links">
+          <!-- aria-current tells assistive technology which page is currently open. -->
+          <li><a class="active" href="index.html" aria-current="page">Home</a></li>
+          <li><a href="programmes.html">Programmes</a></li>
+          <li><a href="student-life.html">Student Life</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
+  </header>
+
+  <!--
+    05 AUGUST – SEMANTIC MARKUP:
+    main contains the unique content of this page. Its id is the skip-link target.
+  -->
+  <main id="main-content" tabindex="-1">
 
   <!-- The hero combines a background image, headings, text formatting and hyperlinks. -->
-  <div class="hero">
+  <section class="hero" aria-labelledby="home-page-heading">
     <div class="hero-content">
       <p class="eyebrow">Your student journey starts here</p>
-      <h1>A clearer way to explore life at Newbridge</h1>
+      <h1 id="home-page-heading">A clearer way to explore life at Newbridge</h1>
       <p class="hero-text">
         Discover programmes, compare study options and connect with campus life through one
         <strong>simple</strong> and <em>student-friendly</em> space.
@@ -53,65 +74,75 @@
         <a class="button-link secondary" href="contact.html">Make an enquiry</a>
       </div>
     </div>
-  </div>
+  </section>
 
   <!--
     04 AUGUST – EVENT AND GLOBAL ATTRIBUTES:
     onclick triggers behaviour; hidden keeps the extra paragraph out of view
     until the toggleAnnouncement() function changes its hidden value.
   -->
-  <div class="announcement">
+  <!-- 05 AUGUST – SEMANTIC MARKUP: aside contains related admissions information. -->
+  <aside class="announcement" aria-label="Applications and registration information">
     <strong>Applications and registrations:</strong> Use this prototype to plan your next step.
-    <button type="button" onclick="toggleAnnouncement()">More information</button>
+    <!-- aria-controls and aria-expanded describe the disclosure button's behaviour. -->
+    <button
+      type="button"
+      aria-controls="extra-announcement"
+      aria-expanded="false"
+      onclick="toggleAnnouncement(this)">
+      More information
+    </button>
     <p id="extra-announcement" hidden>
       This classroom project does not submit a real application. Visit the official NGI website for current admissions information.
     </p>
-  </div>
+  </aside>
 
-  <div class="content-block white">
+  <!-- 05 AUGUST – SECTION: this section has its own descriptive heading. -->
+  <section class="content-block white" aria-labelledby="quick-routes-heading">
     <div class="page-width">
       <div class="section-heading">
         <p class="eyebrow">Start with what you need</p>
-        <h2>Three quick routes into campus life</h2>
+        <h2 id="quick-routes-heading">Three quick routes into campus life</h2>
         <p>The homepage avoids overwhelming visitors by grouping common tasks into clear choices.</p>
       </div>
 
       <div class="card-grid">
-        <div class="info-card">
+        <!-- 05 AUGUST – ARTICLE: each card is a complete, reusable item. -->
+        <article class="info-card">
           <img class="card-image" src="images/programmes-lab.png" alt="Students collaborating in a computer laboratory">
           <div class="card-body">
             <h3>Choose a programme</h3>
             <p>Browse practical study options and compare key details in one place.</p>
             <a class="text-link" href="programmes.html">View study options</a>
           </div>
-        </div>
+        </article>
 
-        <div class="info-card">
+        <article class="info-card">
           <img class="card-image" src="images/student-life.png" alt="Students studying and socialising outdoors">
           <div class="card-body">
             <h3>Experience student life</h3>
             <p>See how learning, community and personal development come together.</p>
             <a class="text-link" href="student-life.html">Visit student life</a>
           </div>
-        </div>
+        </article>
 
-        <div class="info-card">
+        <article class="info-card">
           <img class="card-image" src="images/contact-advisors.png" alt="Student advisors having a friendly conversation">
           <div class="card-body">
             <h3>Speak to an advisor</h3>
             <p>Complete a simple enquiry form and tell us what you would like to study.</p>
             <a class="text-link" href="contact.html">Contact the team</a>
           </div>
-        </div>
+        </article>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="content-block">
+  <section class="content-block" aria-labelledby="why-campus-connect-heading">
     <div class="page-width feature-layout">
       <div>
         <p class="eyebrow">Why Campus Connect?</p>
-        <h2>Useful information without the clutter</h2>
+        <h2 id="why-campus-connect-heading">Useful information without the clutter</h2>
         <p>
           This redesign concept keeps important information visible and gives each page one clear purpose.
           Visitors can move between pages using ordinary HTML hyperlinks.
@@ -128,17 +159,19 @@
         <img class="feature-image" src="images/student-life.png" alt="A diverse student community on campus">
       </a>
     </div>
-  </div>
+  </section>
+  </main>
 
-  <div class="footer">
+  <!-- 05 AUGUST – SEMANTIC MARKUP: footer contains repeated closing information. -->
+  <footer class="footer">
     <div class="page-width">
       <div class="footer-grid">
         <div>
-          <h3 translate="no">Newbridge Campus Connect</h3>
+          <h2 translate="no">Newbridge Campus Connect</h2>
           <p>A student-built redesign concept that will grow as the VPPHX class learns new HTML concepts.</p>
         </div>
         <div>
-          <h3>Quick links</h3>
+          <h2>Quick links</h2>
           <ul>
             <li><a href="programmes.html">Programmes</a></li>
             <li><a href="student-life.html">Student Life</a></li>
@@ -146,13 +179,15 @@
           </ul>
         </div>
         <div>
-          <h3>Official website</h3>
+          <h2>Official website</h2>
           <p><a href="https://www.ngi.ac.za/" target="_blank" rel="noopener">Visit ngi.ac.za</a></p>
         </div>
       </div>
-      <p class="copyright">Copyright 2026. Classroom prototype for educational demonstration.</p>
+      <p class="copyright"> <!-- AMEND IN EACH PAGE -->
+        &copy; 2026. Newbridge Campus Connect - Classroom prototype
+      </p>
     </div>
-  </div>
+  </footer>
 
   
 </body>
