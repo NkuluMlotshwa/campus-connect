@@ -81,11 +81,18 @@
       cursor: pointer;
     }
   </style>
+  
+  <link rel="icon" type="image/png" href="images/Newbridge-logo.png">
+
 </head>
 <body>
+  <!-- 05 AUGUST – ACCESSIBILITY: keyboard users can bypass repeated navigation. -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <p class="prototype-note">Educational prototype created for the VPPHX HTML class — not the official NGI website.</p>
 
-  <div class="site-top">
+  <!-- 05 AUGUST – SEMANTIC MARKUP: header contains the brand and navigation. -->
+  <header class="site-top">
     <div class="page-width top-row">
       <!--
         04 AUGUST – GLOBAL ATTRIBUTES:
@@ -100,29 +107,35 @@
           <span class="brand-subtitle">Find your path. Build your future.</span>
         </span>
       </a>
-      <ul class="site-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a class="active" href="programmes.html">Programmes</a></li>
-        <li><a href="student-life.html">Student Life</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      <!-- 05 AUGUST – SEMANTIC MARKUP: nav identifies the primary link group. -->
+      <nav aria-label="Primary navigation">
+        <ul class="site-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a class="active" href="programmes.html" aria-current="page">Programmes</a></li>
+          <li><a href="student-life.html">Student Life</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <div class="page-banner">
+  <!-- 05 AUGUST – SEMANTIC MARKUP: main contains this page's unique content. -->
+  <main id="main-content" tabindex="-1">
+
+  <section class="page-banner" aria-labelledby="programmes-page-heading">
     <div class="page-width">
       <p class="eyebrow">Explore your options</p>
-      <h1>Find a programme that fits your ambition</h1>
+      <h1 id="programmes-page-heading">Find a programme that fits your ambition</h1>
       <p>Use the buttons to filter the programme cards, then compare the schools in the table below.</p>
     </div>
-  </div>
+  </section>
 
   <!-- ==================================================================
        04 AUGUST CLASSROOM ADDITION
        This block brings the day's styling, global-attribute, event-attribute
        and data-attribute concepts together inside the existing website.
        ================================================================== -->
-  <div class="content-block">
+  <section class="content-block" aria-labelledby="august-lesson-title">
     <div class="page-width">
       <p class="eyebrow">04 August classroom build</p>
 
@@ -199,13 +212,13 @@
         </button>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="content-block white">
+  <section class="content-block white" aria-labelledby="study-areas-heading">
     <div class="page-width">
       <div class="section-heading">
         <p class="eyebrow">Programme finder</p>
-        <h2>Popular study areas</h2>
+        <h2 id="study-areas-heading">Popular study areas</h2>
         <p>Each card stores extra information in custom <code>data-*</code> attributes.</p>
       </div>
 
@@ -213,13 +226,18 @@
         04 AUGUST – EVENT ATTRIBUTE:
         onclick runs a JavaScript function when a filter button is activated.
       -->
-      <div class="filter-row">
-        <button class="selected" type="button" onclick="filterProgrammes('all', this)">All</button>
-        <button type="button" onclick="filterProgrammes('career', this)">Career programmes</button>
-        <button type="button" onclick="filterProgrammes('qualification', this)">Qualifications</button>
+      <!--
+        05 AUGUST – ACCESSIBILITY:
+        aria-pressed communicates which filter button is currently selected.
+        aria-controls identifies the group of programme cards being filtered.
+      -->
+      <div class="filter-row" role="group" aria-label="Filter programmes by level">
+        <button class="selected" type="button" aria-pressed="true" aria-controls="programme-grid" onclick="filterProgrammes('all', this)">All</button>
+        <button type="button" aria-pressed="false" aria-controls="programme-grid" onclick="filterProgrammes('career', this)">Career programmes</button>
+        <button type="button" aria-pressed="false" aria-controls="programme-grid" onclick="filterProgrammes('qualification', this)">Qualifications</button>
       </div>
 
-      <div class="programme-grid">
+      <div class="programme-grid" id="programme-grid">
         <!--
           04 AUGUST – CUSTOM DATA ATTRIBUTES:
           data-programme-id, data-school and data-level store extra information.
@@ -229,7 +247,8 @@
           onmouseover adds the hovered class when the pointer enters the card.
           onmouseout removes the class when the pointer leaves the card.
         -->
-        <div class="workshop-card"
+        <!-- 05 AUGUST – ARTICLE: every programme card is a self-contained item. -->
+        <article class="workshop-card"
              data-programme-id="CPWD101"
              data-school="engineering-it-design"
              data-level="career"
@@ -238,9 +257,9 @@
           <span class="programme-code">CPWD101 · CAREER PROGRAMME</span>
           <h3>Computer Programming and Web Development</h3>
           <p>Build practical foundations in programming, websites and digital problem-solving.</p>
-        </div>
+        </article>
 
-        <div class="workshop-card"
+        <article class="workshop-card"
              data-programme-id="GWD102"
              data-school="engineering-it-design"
              data-level="career"
@@ -249,9 +268,9 @@
           <span class="programme-code">GWD102 · CAREER PROGRAMME</span>
           <h3>Graphic and Web Design</h3>
           <p>Combine visual communication, design thinking and website creation.</p>
-        </div>
+        </article>
 
-        <div class="workshop-card"
+        <article class="workshop-card"
              data-programme-id="CBA201"
              data-school="commerce"
              data-level="qualification"
@@ -260,9 +279,9 @@
           <span class="programme-code">CBA201 · QUALIFICATION</span>
           <h3>Bachelor of Commerce</h3>
           <p>Develop broad business knowledge for a changing professional environment.</p>
-        </div>
+        </article>
 
-        <div class="workshop-card"
+        <article class="workshop-card"
              data-programme-id="HTM202"
              data-school="environment-leisure"
              data-level="qualification"
@@ -271,9 +290,9 @@
           <span class="programme-code">HTM202 · QUALIFICATION</span>
           <h3>Hospitality and Tourism</h3>
           <p>Explore guest experiences, tourism operations and service leadership.</p>
-        </div>
+        </article>
 
-        <div class="workshop-card"
+        <article class="workshop-card"
              data-programme-id="ECD203"
              data-school="humanities-education"
              data-level="qualification"
@@ -282,9 +301,9 @@
           <span class="programme-code">ECD203 · QUALIFICATION</span>
           <h3>Early Childhood Development</h3>
           <p>Prepare to support young learners during an important stage of development.</p>
-        </div>
+        </article>
 
-        <div class="workshop-card"
+        <article class="workshop-card"
              data-programme-id="SPM204"
              data-school="sport-fitness"
              data-level="qualification"
@@ -293,16 +312,16 @@
           <span class="programme-code">SPM204 · QUALIFICATION</span>
           <h3>Sport Management</h3>
           <p>Connect business principles with the energetic world of sport and fitness.</p>
-        </div>
+        </article>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="content-block">
+  <section class="content-block" aria-labelledby="schools-heading">
     <div class="page-width">
       <div class="section-heading">
         <p class="eyebrow">Compare study areas</p>
-        <h2>Schools at a glance</h2>
+        <h2 id="schools-heading">Schools at a glance</h2>
         <p>The table uses headings, rows, columns, a caption and scope attributes.</p>
       </div>
 
@@ -347,30 +366,31 @@
       </div>
       <p><small>Programme names and availability should be confirmed on the official NGI website.</small></p>
     </div>
-  </div>
+  </section>
 
-  <div class="content-block white">
+  <section class="content-block white" aria-labelledby="advisor-heading">
     <div class="page-width feature-layout">
       <img class="feature-image" src="images/programmes-lab.png" alt="Students collaborating with laptops in a computer lab">
       <div>
         <p class="eyebrow">Need help deciding?</p>
-        <h2>Start a conversation with a student advisor</h2>
+        <h2 id="advisor-heading">Start a conversation with a student advisor</h2>
         <p>Tell us which school interests you and the enquiry form will collect the information needed for a follow-up.</p>
         <a class="button-link" href="contact.html">Open the enquiry form</a>
       </div>
     </div>
-  </div>
+  </section>
+  </main>
 
-  <div class="footer">
+  <!-- 05 AUGUST – SEMANTIC MARKUP: footer holds repeated closing content. -->
+  <footer class="footer">
     <div class="page-width">
       <div class="footer-grid">
-        <div><h3 translate="no">Newbridge Campus Connect</h3><p>A student-built website redesign concept.</p></div>
-        <div><h3>Quick links</h3><ul><li><a href="index.html">Home</a></li><li><a href="student-life.html">Student Life</a></li></ul></div>
-        <div><h3>Next step</h3><p><a href="contact.html">Make an enquiry</a></p></div>
+        <div><h2 translate="no">Newbridge Campus Connect</h2><p>A student-built website redesign concept.</p></div>
+        <div><h2>Quick links</h2><ul><li><a href="index.html">Home</a></li><li><a href="student-life.html">Student Life</a></li></ul></div>
+        <div><h2>Next step</h2><p><a href="contact.html">Make an enquiry</a></p></div>
       </div>
-      <p class="copyright">Copyright 2026. Classroom prototype for educational demonstration.</p>
     </div>
-  </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
